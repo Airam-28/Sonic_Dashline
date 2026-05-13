@@ -1,0 +1,441 @@
+[gd_scene format=3 uid="uid://v1xfv81gtsku"]
+
+[ext_resource type="PackedScene" uid="uid://c6sxy2x5uyn3g" path="res://src/entities/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://src/entities/Ring.tscn" id="2_ring"]
+[ext_resource type="PackedScene" path="res://src/ui/LevelUILayout.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://src/entities/Spikes.tscn" id="4_spikes"]
+[ext_resource type="PackedScene" uid="uid://ep7jmwo0a1y1" path="res://src/entities/Goal.tscn" id="5_goal"]
+[ext_resource type="Texture2D" uid="uid://cgcfmw2a6xjam" path="res://assets/sunny-land/assets/environment/back.png" id="6_back"]
+[ext_resource type="Texture2D" uid="uid://cb41vji5d3ny0" path="res://assets/sunny-land/assets/environment/middle.png" id="7_middle"]
+[ext_resource type="Script" uid="uid://dq5543hv2dyjo" path="res://src/scripts/KillZone.gd" id="8_script"]
+[ext_resource type="AudioStream" uid="uid://ci3ichjowb5q3" path="res://assets/audio/RightThereRideOn.ogg" id="9_bgm"]
+[ext_resource type="PackedScene" uid="uid://c1owhcbo4cdbj" path="res://src/entities/Spring.tscn" id="10_spring"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(3570, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
+size = Vector2(400, 40)
+
+[node name="World" type="Node2D" unique_id=1463766027]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=79929707]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1297495226]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1536, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=894378535]
+scale = Vector2(4, 4)
+texture = ExtResource("6_back")
+centered = false
+
+[node name="ParallaxLayer_Clouds" type="ParallaxLayer" parent="ParallaxBackground" unique_id=473419036]
+motion_scale = Vector2(0.15, 0.15)
+motion_mirroring = Vector2(1536, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_Clouds" unique_id=1042592295]
+modulate = Color(1, 1, 1, 0.3)
+scale = Vector2(4, 4)
+texture = ExtResource("6_back")
+centered = false
+flip_h = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=629450515]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1408, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=901515990]
+position = Vector2(2.9999998, 401)
+scale = Vector2(3.0397727, 2)
+texture = ExtResource("7_middle")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1872163791]
+position = Vector2(539, 401)
+scale = Vector2(3.0397727, 2)
+texture = ExtResource("7_middle")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1866089015]
+position = Vector2(963, 401)
+scale = Vector2(3.0397727, 2)
+texture = ExtResource("7_middle")
+centered = false
+
+[node name="Environment" type="Node2D" parent="." unique_id=188842472]
+
+[node name="StartFloor" type="StaticBody2D" parent="Environment" unique_id=456840577]
+position = Vector2(0, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StartFloor" unique_id=932571392]
+position = Vector2(1250, 0)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Environment/StartFloor" unique_id=560268363]
+offset_left = 2.0
+offset_top = -100.0
+offset_right = 2500.0
+offset_bottom = 100.0
+color = Color(0.2, 0.4, 0.1, 1)
+
+[node name="EndFloor" type="StaticBody2D" parent="Environment" unique_id=1493571196]
+position = Vector2(4500, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/EndFloor" unique_id=128828659]
+position = Vector2(1500, 0)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Environment/EndFloor" unique_id=644447375]
+offset_top = -100.0
+offset_right = 3000.0
+offset_bottom = 100.0
+color = Color(0.2, 0.4, 0.1, 1)
+
+[node name="FloatingPlatforms" type="Node2D" parent="Environment" unique_id=2104691351]
+
+[node name="Plat1" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=635149977]
+position = Vector2(2800, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat1" unique_id=166552140]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat1" unique_id=209614311]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.4, 0.25, 0.1, 1)
+
+[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat1" unique_id=1316109227]
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -10.0
+color = Color(0.3, 0.6, 0.2, 1)
+
+[node name="Plat2" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1451975752]
+position = Vector2(3500, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat2" unique_id=718249668]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat2" unique_id=655768134]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.4, 0.25, 0.1, 1)
+
+[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat2" unique_id=1044210305]
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -10.0
+color = Color(0.3, 0.6, 0.2, 1)
+
+[node name="Plat3" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1354167130]
+position = Vector2(4200, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat3" unique_id=1305429107]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat3" unique_id=504967707]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.4, 0.25, 0.1, 1)
+
+[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat3" unique_id=202958647]
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -10.0
+color = Color(0.3, 0.6, 0.2, 1)
+
+[node name="Plat4" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1210524287]
+position = Vector2(7500, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat4" unique_id=1417979868]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat4" unique_id=810603038]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.4, 0.25, 0.1, 1)
+
+[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat4" unique_id=1924444576]
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -10.0
+color = Color(0.3, 0.6, 0.2, 1)
+
+[node name="Plat5" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=808667257]
+position = Vector2(8500, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat5" unique_id=1508926368]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat5" unique_id=1322607025]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.4, 0.25, 0.1, 1)
+
+[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat5" unique_id=1263821665]
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -10.0
+color = Color(0.3, 0.6, 0.2, 1)
+
+[node name="Plat6" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1660555898]
+position = Vector2(9500, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat6" unique_id=2087682682]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat6" unique_id=1091386468]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.4, 0.25, 0.1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat6" unique_id=1549724820]
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -10.0
+color = Color(0.3, 0.6, 0.2, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Plat7" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1866996642]
+position = Vector2(10260, 524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat7" unique_id=914410463]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat7" unique_id=1761926983]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 200.0
+offset_bottom = 20.0
+color = Color(0.4, 0.25, 0.1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat7" unique_id=1840333969]
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -10.0
+color = Color(0.3, 0.6, 0.2, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="FinalFloor" type="StaticBody2D" parent="Environment" unique_id=2045261900]
+position = Vector2(11000, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FinalFloor" unique_id=712377266]
+position = Vector2(1000, 0)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Environment/FinalFloor" unique_id=341096913]
+offset_top = -100.0
+offset_right = 2000.0
+offset_bottom = 100.0
+color = Color(0.2, 0.4, 0.1, 1)
+
+[node name="Decorations" type="Node2D" parent="Environment" unique_id=2091967907]
+
+[node name="Goal" parent="Environment" unique_id=254215604 instance=ExtResource("5_goal")]
+position = Vector2(12000, 384)
+
+[node name="Mechanics" type="Node2D" parent="Environment" unique_id=1628138693]
+
+[node name="Spring1" parent="Environment/Mechanics" unique_id=449047034 instance=ExtResource("10_spring")]
+position = Vector2(2300, 570)
+
+[node name="Spring5" parent="Environment/Mechanics" unique_id=2049380089 instance=ExtResource("10_spring")]
+position = Vector2(2325, 570)
+
+[node name="Spring6" parent="Environment/Mechanics" unique_id=1820076945 instance=ExtResource("10_spring")]
+position = Vector2(2275, 570)
+
+[node name="Spring7" parent="Environment/Mechanics" unique_id=608986637 instance=ExtResource("10_spring")]
+position = Vector2(2275, 570)
+
+[node name="Spring8" parent="Environment/Mechanics" unique_id=693518061 instance=ExtResource("10_spring")]
+position = Vector2(6987, 576)
+
+[node name="Spring9" parent="Environment/Mechanics" unique_id=711485113 instance=ExtResource("10_spring")]
+position = Vector2(7012, 576)
+
+[node name="Spring16" parent="Environment/Mechanics" unique_id=1471859852 instance=ExtResource("10_spring")]
+position = Vector2(7655, 253)
+
+[node name="Spring17" parent="Environment/Mechanics" unique_id=2060529064 instance=ExtResource("10_spring")]
+position = Vector2(7680, 253)
+
+[node name="Spring10" parent="Environment/Mechanics" unique_id=1886494040 instance=ExtResource("10_spring")]
+position = Vector2(6962, 576)
+
+[node name="Spring11" parent="Environment/Mechanics" unique_id=1156895521 instance=ExtResource("10_spring")]
+position = Vector2(6962, 576)
+
+[node name="Spring12" parent="Environment/Mechanics" unique_id=582262441 instance=ExtResource("10_spring")]
+position = Vector2(8662, 50)
+
+[node name="Spring13" parent="Environment/Mechanics" unique_id=650589383 instance=ExtResource("10_spring")]
+position = Vector2(8687, 50)
+
+[node name="Spring14" parent="Environment/Mechanics" unique_id=238887781 instance=ExtResource("10_spring")]
+position = Vector2(8637, 50)
+
+[node name="Spring15" parent="Environment/Mechanics" unique_id=1307706829 instance=ExtResource("10_spring")]
+position = Vector2(8637, 50)
+
+[node name="Spring2" parent="Environment/Mechanics" unique_id=1521259263 instance=ExtResource("10_spring")]
+position = Vector2(3500, 358)
+
+[node name="Spring3" parent="Environment/Mechanics" unique_id=367145592 instance=ExtResource("10_spring")]
+position = Vector2(3475, 358)
+
+[node name="Spring4" parent="Environment/Mechanics" unique_id=2129115604 instance=ExtResource("10_spring")]
+position = Vector2(3525, 358)
+
+[node name="Hazards" type="Node2D" parent="Environment" unique_id=1891910448]
+
+[node name="Spikes1" parent="Environment/Hazards" unique_id=528416909 instance=ExtResource("4_spikes")]
+position = Vector2(1500, 600)
+
+[node name="Spikes8" parent="Environment/Hazards" unique_id=1227475681 instance=ExtResource("4_spikes")]
+position = Vector2(1459, 600)
+
+[node name="Spikes9" parent="Environment/Hazards" unique_id=1838749761 instance=ExtResource("4_spikes")]
+position = Vector2(1417, 600)
+
+[node name="Spikes2" parent="Environment/Hazards" unique_id=1619137486 instance=ExtResource("4_spikes")]
+position = Vector2(5500, 600)
+
+[node name="Spikes3" parent="Environment/Hazards" unique_id=1160002560 instance=ExtResource("4_spikes")]
+position = Vector2(5523, 600)
+
+[node name="Spikes4" parent="Environment/Hazards" unique_id=378968403 instance=ExtResource("4_spikes")]
+position = Vector2(5547, 600)
+
+[node name="Spikes5" parent="Environment/Hazards" unique_id=564639692 instance=ExtResource("4_spikes")]
+position = Vector2(5569, 600)
+
+[node name="Spikes6" parent="Environment/Hazards" unique_id=1664890266 instance=ExtResource("4_spikes")]
+position = Vector2(5591, 600)
+
+[node name="Spikes7" parent="Environment/Hazards" unique_id=421043418 instance=ExtResource("4_spikes")]
+position = Vector2(5610, 600)
+
+[node name="KillZone" type="Area2D" parent="Environment/Hazards" unique_id=981607377]
+position = Vector2(3500, 1200)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Hazards/KillZone" unique_id=869044901]
+position = Vector2(13, -301)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Hazards/KillZone" unique_id=561160723]
+position = Vector2(5723, -293)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Entities" type="Node2D" parent="." unique_id=777452299]
+
+[node name="Player" parent="Entities" unique_id=1546085013 instance=ExtResource("1_player")]
+position = Vector2(100, 500)
+
+[node name="Rings" type="Node2D" parent="Entities" unique_id=2133819210]
+
+[node name="Ring" parent="Entities/Rings" unique_id=1994504010 instance=ExtResource("2_ring")]
+position = Vector2(800, 550)
+
+[node name="Ring5" parent="Entities/Rings" unique_id=182989482 instance=ExtResource("2_ring")]
+position = Vector2(778, 550)
+
+[node name="Ring6" parent="Entities/Rings" unique_id=1080698617 instance=ExtResource("2_ring")]
+position = Vector2(756, 550)
+
+[node name="Ring7" parent="Entities/Rings" unique_id=370925499 instance=ExtResource("2_ring")]
+position = Vector2(733, 550)
+
+[node name="Ring17" parent="Entities/Rings" unique_id=1067424619 instance=ExtResource("2_ring")]
+position = Vector2(9500, 220)
+
+[node name="Ring18" parent="Entities/Rings" unique_id=1468163755 instance=ExtResource("2_ring")]
+position = Vector2(7500, 180)
+
+[node name="Ring19" parent="Entities/Rings" unique_id=227842272 instance=ExtResource("2_ring")]
+position = Vector2(8500, -20)
+
+[node name="Ring20" parent="Entities/Rings" unique_id=1074502344 instance=ExtResource("2_ring")]
+position = Vector2(9500, 180)
+
+[node name="Ring24" parent="Entities/Rings" unique_id=1143526192 instance=ExtResource("2_ring")]
+position = Vector2(10260, 444)
+
+[node name="Ring25" parent="Entities/Rings" unique_id=1008300128 instance=ExtResource("2_ring")]
+position = Vector2(10260, 404)
+
+[node name="Ring21" parent="Entities/Rings" unique_id=342461036 instance=ExtResource("2_ring")]
+position = Vector2(11500, 550)
+
+[node name="Ring22" parent="Entities/Rings" unique_id=1723440370 instance=ExtResource("2_ring")]
+position = Vector2(11600, 550)
+
+[node name="Ring23" parent="Entities/Rings" unique_id=1612117497 instance=ExtResource("2_ring")]
+position = Vector2(11700, 550)
+
+[node name="Ring2" parent="Entities/Rings" unique_id=300010629 instance=ExtResource("2_ring")]
+position = Vector2(2800, 420)
+
+[node name="Ring8" parent="Entities/Rings" unique_id=79376705 instance=ExtResource("2_ring")]
+position = Vector2(2824, 420)
+
+[node name="Ring9" parent="Entities/Rings" unique_id=1838322138 instance=ExtResource("2_ring")]
+position = Vector2(2848, 420)
+
+[node name="Ring3" parent="Entities/Rings" unique_id=2066572897 instance=ExtResource("2_ring")]
+position = Vector2(3500, 320)
+
+[node name="Ring10" parent="Entities/Rings" unique_id=1104296781 instance=ExtResource("2_ring")]
+position = Vector2(3526, 293)
+
+[node name="Ring11" parent="Entities/Rings" unique_id=1735057229 instance=ExtResource("2_ring")]
+position = Vector2(3552, 276)
+
+[node name="Ring12" parent="Entities/Rings" unique_id=2059951753 instance=ExtResource("2_ring")]
+position = Vector2(3575, 259)
+
+[node name="Ring13" parent="Entities/Rings" unique_id=763731268 instance=ExtResource("2_ring")]
+position = Vector2(3599, 242)
+
+[node name="Ring4" parent="Entities/Rings" unique_id=1324040756 instance=ExtResource("2_ring")]
+position = Vector2(4200, 420)
+
+[node name="Ring14" parent="Entities/Rings" unique_id=581585723 instance=ExtResource("2_ring")]
+position = Vector2(4222, 420)
+
+[node name="Ring15" parent="Entities/Rings" unique_id=2032696332 instance=ExtResource("2_ring")]
+position = Vector2(4246, 420)
+
+[node name="Ring16" parent="Entities/Rings" unique_id=437544265 instance=ExtResource("2_ring")]
+position = Vector2(4268, 420)
+
+[node name="HUD" parent="." unique_id=942252850 instance=ExtResource("3_hud")]
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1901574321]
+stream = ExtResource("9_bgm")
+autoplay = true
