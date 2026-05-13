@@ -18,7 +18,7 @@ Sonic Dashline es una modernización técnica y visual de las mecánicas clásic
 | Acción | Tecla |
 | :--- | :--- |
 | **Moverse** | `A` / `D` |
-| **Saltar** | `Espacio` |
+| **Saltar** | `Espacio` / `W` |
 | **Boost (Turbo)** | `Shift` (Mantener) |
 | **Pausar** | `Esc` |
 | **Reiniciar** | `R` (En pantallas de fin de juego) |
