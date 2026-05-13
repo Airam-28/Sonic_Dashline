@@ -29,6 +29,11 @@ func _set_volume(bus_name, value):
 
 func _on_fullscreen_toggled(toggled_on):
 	if toggled_on:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	# Verify and sync state (in case OS denies fullscreen)
+	await get_tree().process_frame
+	var actual_full = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	$VBoxContainer/ScrollContainer/OptionsList/Fullscreen/CheckButton.set_pressed_no_signal(actual_full)

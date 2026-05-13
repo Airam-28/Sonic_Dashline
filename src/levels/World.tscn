@@ -10,9 +10,10 @@
 [ext_resource type="Script" uid="uid://dq5543hv2dyjo" path="res://src/scripts/KillZone.gd" id="8_script"]
 [ext_resource type="AudioStream" uid="uid://ci3ichjowb5q3" path="res://assets/audio/RightThereRideOn.ogg" id="9_bgm"]
 [ext_resource type="PackedScene" uid="uid://c1owhcbo4cdbj" path="res://src/entities/Spring.tscn" id="10_spring"]
+[ext_resource type="Texture2D" uid="uid://b4yj1aq53qmrm" path="res://assets/sunny-land/assets/environment/tileset.png" id="11_tileset"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(3570, 200)
+size = Vector2(3119, 206)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
 size = Vector2(400, 40)
@@ -69,28 +70,43 @@ centered = false
 position = Vector2(0, 700)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StartFloor" unique_id=932571392]
-position = Vector2(1250, 0)
+position = Vector2(1553, 0)
 shape = SubResource("RectangleShape2D_floor")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/StartFloor" unique_id=560268363]
-offset_left = 2.0
-offset_top = -100.0
-offset_right = 2500.0
-offset_bottom = 100.0
-color = Color(0.2, 0.4, 0.1, 1)
+[node name="ColorRect" type="NinePatchRect" parent="Environment/StartFloor" unique_id=560268363]
+offset_left = -24.0
+offset_top = -118.0
+offset_right = 3127.0
+offset_bottom = -71.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="EndFloor" type="StaticBody2D" parent="Environment" unique_id=1493571196]
 position = Vector2(4500, 700)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/EndFloor" unique_id=128828659]
-position = Vector2(1500, 0)
+position = Vector2(1493.5, 0)
 shape = SubResource("RectangleShape2D_floor")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/EndFloor" unique_id=644447375]
-offset_top = -100.0
-offset_right = 3000.0
-offset_bottom = 100.0
-color = Color(0.2, 0.4, 0.1, 1)
+[node name="ColorRect" type="NinePatchRect" parent="Environment/EndFloor" unique_id=644447375]
+offset_left = -82.0
+offset_top = -118.0
+offset_right = 3069.0
+offset_bottom = -70.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="FloatingPlatforms" type="Node2D" parent="Environment" unique_id=2104691351]
 
@@ -100,19 +116,19 @@ position = Vector2(2800, 500)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat1" unique_id=166552140]
 shape = SubResource("RectangleShape2D_plat")
 
-[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat1" unique_id=209614311]
-offset_left = -200.0
-offset_top = -10.0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(0.4, 0.25, 0.1, 1)
-
-[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat1" unique_id=1316109227]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = -10.0
-color = Color(0.3, 0.6, 0.2, 1)
+[node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat1" unique_id=492777640]
+offset_left = -216.0
+offset_top = -35.0
+offset_right = 214.0
+offset_bottom = 8.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Plat2" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1451975752]
 position = Vector2(3500, 400)
@@ -120,19 +136,19 @@ position = Vector2(3500, 400)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat2" unique_id=718249668]
 shape = SubResource("RectangleShape2D_plat")
 
-[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat2" unique_id=655768134]
-offset_left = -200.0
-offset_top = -10.0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(0.4, 0.25, 0.1, 1)
-
-[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat2" unique_id=1044210305]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = -10.0
-color = Color(0.3, 0.6, 0.2, 1)
+[node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat2" unique_id=1833372390]
+offset_left = -216.0
+offset_top = -26.0
+offset_right = 215.0
+offset_bottom = 14.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Plat3" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1354167130]
 position = Vector2(4200, 500)
@@ -140,19 +156,19 @@ position = Vector2(4200, 500)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat3" unique_id=1305429107]
 shape = SubResource("RectangleShape2D_plat")
 
-[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat3" unique_id=504967707]
-offset_left = -200.0
-offset_top = -10.0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(0.4, 0.25, 0.1, 1)
-
-[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat3" unique_id=202958647]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = -10.0
-color = Color(0.3, 0.6, 0.2, 1)
+[node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat3" unique_id=1194054864]
+offset_left = -215.0
+offset_top = -36.0
+offset_right = 216.0
+offset_bottom = 4.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Plat4" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1210524287]
 position = Vector2(7500, 300)
@@ -160,19 +176,19 @@ position = Vector2(7500, 300)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat4" unique_id=1417979868]
 shape = SubResource("RectangleShape2D_plat")
 
-[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat4" unique_id=810603038]
-offset_left = -200.0
-offset_top = -10.0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(0.4, 0.25, 0.1, 1)
-
-[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat4" unique_id=1924444576]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = -10.0
-color = Color(0.3, 0.6, 0.2, 1)
+[node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat4" unique_id=2021530934]
+offset_left = -216.0
+offset_top = -31.0
+offset_right = 215.0
+offset_bottom = 9.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Plat5" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=808667257]
 position = Vector2(8500, 100)
@@ -180,19 +196,19 @@ position = Vector2(8500, 100)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat5" unique_id=1508926368]
 shape = SubResource("RectangleShape2D_plat")
 
-[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat5" unique_id=1322607025]
-offset_left = -200.0
-offset_top = -10.0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(0.4, 0.25, 0.1, 1)
-
-[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat5" unique_id=1263821665]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = -10.0
-color = Color(0.3, 0.6, 0.2, 1)
+[node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat5" unique_id=1782306063]
+offset_left = -215.0
+offset_top = -33.0
+offset_right = 214.0
+offset_bottom = 7.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Plat6" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1660555898]
 position = Vector2(9500, 300)
@@ -200,20 +216,19 @@ position = Vector2(9500, 300)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FloatingPlatforms/Plat6" unique_id=2087682682]
 shape = SubResource("RectangleShape2D_plat")
 
-[node name="Dirt" type="ColorRect" parent="Environment/FloatingPlatforms/Plat6" unique_id=1091386468]
-offset_left = -200.0
-offset_top = -10.0
-offset_right = 200.0
-offset_bottom = 20.0
-color = Color(0.4, 0.25, 0.1, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Grass" type="ColorRect" parent="Environment/FloatingPlatforms/Plat6" unique_id=1549724820]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = -10.0
-color = Color(0.3, 0.6, 0.2, 1)
+[node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat6" unique_id=1328256350]
+offset_left = -202.0
+offset_top = -35.0
+offset_right = 198.0
+offset_bottom = 5.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Plat7" type="StaticBody2D" parent="Environment/FloatingPlatforms" unique_id=1866996642]
@@ -242,19 +257,27 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(11000, 700)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/FinalFloor" unique_id=712377266]
-position = Vector2(1000, 0)
+position = Vector2(1515, 0)
 shape = SubResource("RectangleShape2D_floor")
 
-[node name="ColorRect" type="ColorRect" parent="Environment/FinalFloor" unique_id=341096913]
-offset_top = -100.0
-offset_right = 2000.0
-offset_bottom = 100.0
-color = Color(0.2, 0.4, 0.1, 1)
+[node name="ColorRect" type="NinePatchRect" parent="Environment/FinalFloor" unique_id=341096913]
+offset_left = -60.0
+offset_top = -116.0
+offset_right = 1214.0
+offset_bottom = -68.0
+texture = ExtResource("11_tileset")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Decorations" type="Node2D" parent="Environment" unique_id=2091967907]
 
 [node name="Goal" parent="Environment" unique_id=254215604 instance=ExtResource("5_goal")]
-position = Vector2(12000, 384)
+position = Vector2(12000, 496)
 
 [node name="Mechanics" type="Node2D" parent="Environment" unique_id=1628138693]
 
@@ -348,8 +371,22 @@ script = ExtResource("8_script")
 position = Vector2(13, -301)
 shape = SubResource("RectangleShape2D_floor")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Hazards/KillZone" unique_id=561160723]
-position = Vector2(5723, -293)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Hazards/KillZone" unique_id=2074721903]
+position = Vector2(-5015, -283)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="KillZone2" type="Area2D" parent="Environment/Hazards" unique_id=148753356]
+position = Vector2(8759, 1232)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Hazards/KillZone2" unique_id=1462762555]
+position = Vector2(257.875, -301)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Hazards/KillZone2" unique_id=724565352]
+position = Vector2(907.5, -301)
 shape = SubResource("RectangleShape2D_floor")
 
 [node name="Entities" type="Node2D" parent="." unique_id=777452299]
