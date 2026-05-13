@@ -74,10 +74,10 @@ position = Vector2(1553, 0)
 shape = SubResource("RectangleShape2D_floor")
 
 [node name="ColorRect" type="NinePatchRect" parent="Environment/StartFloor" unique_id=560268363]
-offset_left = 8.0
-offset_top = -100.0
-offset_right = 2500.0
-offset_bottom = -53.0
+offset_left = -24.0
+offset_top = -118.0
+offset_right = 3127.0
+offset_bottom = -71.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -96,9 +96,9 @@ shape = SubResource("RectangleShape2D_floor")
 
 [node name="ColorRect" type="NinePatchRect" parent="Environment/EndFloor" unique_id=644447375]
 offset_left = -82.0
-offset_top = -100.0
-offset_right = 3055.0
-offset_bottom = -52.0
+offset_top = -118.0
+offset_right = 3069.0
+offset_bottom = -70.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -117,10 +117,10 @@ position = Vector2(2800, 500)
 shape = SubResource("RectangleShape2D_plat")
 
 [node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat1" unique_id=492777640]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = 20.0
+offset_left = -216.0
+offset_top = -35.0
+offset_right = 214.0
+offset_bottom = 8.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -137,10 +137,10 @@ position = Vector2(3500, 400)
 shape = SubResource("RectangleShape2D_plat")
 
 [node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat2" unique_id=1833372390]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = 20.0
+offset_left = -216.0
+offset_top = -26.0
+offset_right = 215.0
+offset_bottom = 14.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -157,10 +157,10 @@ position = Vector2(4200, 500)
 shape = SubResource("RectangleShape2D_plat")
 
 [node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat3" unique_id=1194054864]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = 20.0
+offset_left = -215.0
+offset_top = -36.0
+offset_right = 216.0
+offset_bottom = 4.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -177,10 +177,10 @@ position = Vector2(7500, 300)
 shape = SubResource("RectangleShape2D_plat")
 
 [node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat4" unique_id=2021530934]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = 20.0
+offset_left = -216.0
+offset_top = -31.0
+offset_right = 215.0
+offset_bottom = 9.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -197,10 +197,10 @@ position = Vector2(8500, 100)
 shape = SubResource("RectangleShape2D_plat")
 
 [node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat5" unique_id=1782306063]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = 20.0
+offset_left = -215.0
+offset_top = -33.0
+offset_right = 214.0
+offset_bottom = 7.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -217,10 +217,10 @@ position = Vector2(9500, 300)
 shape = SubResource("RectangleShape2D_plat")
 
 [node name="Visuals" type="NinePatchRect" parent="Environment/FloatingPlatforms/Plat6" unique_id=1328256350]
-offset_left = -200.0
-offset_top = -20.0
-offset_right = 200.0
-offset_bottom = 20.0
+offset_left = -202.0
+offset_top = -35.0
+offset_right = 198.0
+offset_bottom = 5.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -262,9 +262,9 @@ shape = SubResource("RectangleShape2D_floor")
 
 [node name="ColorRect" type="NinePatchRect" parent="Environment/FinalFloor" unique_id=341096913]
 offset_left = -60.0
-offset_top = -100.0
+offset_top = -116.0
 offset_right = 1214.0
-offset_bottom = -52.0
+offset_bottom = -68.0
 texture = ExtResource("11_tileset")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
