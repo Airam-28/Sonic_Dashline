@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c13ose8l0hgb5"]
+
+[ext_resource type="Texture2D" uid="uid://c5cqb6gw43xu" path="res://assets/sprites/UI/boostbar.png" id="1"]
+
+[node name="Unit" type="Control" unique_id=2106214726]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=202658834]
+layout_mode = 0
+texture = ExtResource("1")
