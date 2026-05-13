@@ -1,0 +1,137 @@
+[gd_scene load_steps=31 format=3 uid="uid://c6sxy2x5uyn3g"]
+
+[ext_resource type="Script" path="res://src/scripts/Player_Modern.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/sonic_idle0.png" id="2_idle0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/sonic_idle1.png" id="3_idle1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/sonic_run4_0.png" id="4_run0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/sonic_run4_1.png" id="5_run1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/sonic_run4_2.png" id="6_run2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/sonic_run4_3.png" id="7_run3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/roll_0.png" id="8_roll0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/roll_1.png" id="9_roll1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/roll_2.png" id="10_roll2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/roll_3.png" id="11_roll3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Crouch.png" id="12_crouch"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run30.png" id="13_b0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run31.png" id="14_b1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run32.png" id="15_b2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run33.png" id="16_b3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run34.png" id="17_b4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run35.png" id="18_b5"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run36.png" id="19_b6"]
+[ext_resource type="Texture2D" path="res://assets/sprites/sonic/Sonic_run37.png" id="20_b7"]
+[ext_resource type="AudioStream" path="res://assets/audio/SFX/Boost.wav" id="21_boost_audio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crouch"]
+atlas = ExtResource("12_crouch")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sonic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crouch")
+}],
+"loop": true,
+"name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_b2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_b6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_b7")
+}],
+"loop": true,
+"name": &"Boost",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_roll0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_roll1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_roll2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_roll3")
+}],
+"loop": true,
+"name": &"Roll",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_run0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_run1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_run2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_run3")
+}],
+"loop": true,
+"name": &"Run4",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_idle0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_idle1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sonic"]
+radius = 10.0
+height = 30.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(2, 2)
+collision_layer = 2
+script = ExtResource("1_script")
+
+[node name="PlayerSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sonic")
+animation = &"Boost"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sonic")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+limit_bottom = 1000
+
+[node name="BoostAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_boost_audio")
+bus = &"SFX"

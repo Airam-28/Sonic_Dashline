@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c1owhcbo4cdbj"]
+
+[ext_resource type="Script" uid="uid://bnrtjeld2yy8y" path="res://src/scripts/Spring.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d2rpfepg3jc75" path="res://assets/sprites/StageElements/Spring1.png" id="2_spring"]
+[ext_resource type="AudioStream" uid="uid://c8x25e62467ki" path="res://assets/audio/SFX/spring.wav" id="3_audio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spring"]
+size = Vector2(32, 16)
+
+[sub_resource type="Animation" id="Animation_bounce"]
+resource_name = "bounce"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spring"]
+_data = {
+&"bounce": SubResource("Animation_bounce")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us38i"]
+atlas = ExtResource("2_spring")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we8kq"]
+atlas = ExtResource("2_spring")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idhci"]
+atlas = ExtResource("2_spring")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuavt"]
+atlas = ExtResource("2_spring")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2s10v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us38i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we8kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idhci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuavt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Spring" type="Area2D" unique_id=2049380089]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=922373221]
+shape = SubResource("RectangleShape2D_spring")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1649386828]
+libraries/ = SubResource("AnimationLibrary_spring")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1212925679]
+stream = ExtResource("3_audio")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=684184331]
+sprite_frames = SubResource("SpriteFrames_2s10v")
+frame_progress = 0.12527414

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/scripts/Spikes.gd" id="1_script"]
+
+[node name="Spikes" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-20, 0, 0, -40, 20, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-20, 0, 0, -40, 20, 0)
